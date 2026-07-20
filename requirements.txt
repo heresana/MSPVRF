@@ -1,0 +1,8 @@
+numpy
+pandas
+matplotlib
+scikit-learn
+joblib
+ollama
+tqdm
+sentence-transformers
