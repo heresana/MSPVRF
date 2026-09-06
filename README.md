@@ -1,4 +1,4 @@
-# SecureGuard (MSPVRF)
+# MSPVRF
 ### Dual-Plane Prompt Injection Defense Framework for Locally-Hosted LLMs
 
 ![Python](https://img.shields.io/badge/python-3.10+-blue.svg)
@@ -9,6 +9,7 @@ Summer Internship Project — CS-RVU-CY-SI-26-28
 School of Computer Science and Engineering, RV University, Bangalore
 
 ---
+## Project Title: Develop a secure prompt validation and response filtering model to protect LLM applications from safety bypass and policy evasion attacks.
 
 ## Problem
 
@@ -109,38 +110,6 @@ INPUT SURFACES (User Prompt / RAG Context)
 - BIPIA (indirect) — 200 prompts sampled from 86,250 across 5 real-world scenarios, 50 attack types
 - Synthetic Benign — 200 prompts
 - Total: 600 prompts per model, held blind until final baseline evaluation
-
-## Repository Structure
-
-```
-GuardPrompt/
-├── data/
-│   ├── adversarial_suite/     # direct jailbreaks, indirect injections, prompt leaking, benign queries for FPR measurement
-│   └── classifier_splits/     # train / val / test for Module 1B  
-├── src/
-│   ├── config.py
-│   ├── gatekeeper.py          # Plane 1 orchestration
-│   ├── pattern_filter.py      # Module 1A: regex, Base64/hex de-obfuscation
-│   ├── intent_classifier.py   # Module 1B: embedding + classifier inference
-│   ├── preprocess_module1b.py # embedding generation for training/eval
-│   ├── firewall.py            # Plane 2 orchestration
-│   ├── context.py             # RequestContext (user_intent / external_context)
-│   ├── models.py              # OllamaClient / VLLMClient
-│   └── pipeline.py            # Input → Gatekeeper → Base LLM → Firewall
-├── scripts/
-│   ├── train_intent_model.py  # trains Module 1B classifier
-│   ├── tune_thresholds.py     # sweeps val set for per-layer thresholds
-│   ├── run_baseline_eval.py   # unshielded evaluation
-│   ├── run_shielded_eval.py   # full-pipeline evaluation
-│   ├── demo_gui.py            # Streamlit demo
-│   └── demo_cli.py            # CLI demo with colored telemetry
-├── notebooks/
-│   ├── 01_data_exploration.ipynb
-│   └── 02_result_analysis.ipynb
-├── results/
-├── requirements.txt
-└── README.md
-```
 
 ## Requirement Specification
 
